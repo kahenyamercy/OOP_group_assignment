@@ -63,8 +63,8 @@ Virtual Pet Management System implemented in C++.
 - **Code Quality**: Follows best practices with meaningful comments and consistent naming conventions.
 
 
-### Demo (Optional)
-
+### Demo video
+[https://www.loom.com/share/50b4721e39f44bfead1da7459c4614d1?sid=ecf77d8a-3e7e-43ce-9c64-52d254005bb8]
 ## Installation and Usage
 
 ### Prerequisites
