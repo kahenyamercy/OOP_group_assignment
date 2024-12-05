@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,55 +7,212 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 font-roboto">
-    <div class="container mx-auto p-4">
-        <h1 class="text-4xl font-bold text-center mb-8">Pixel Pals - Virtual Pet Game</h1>
+<body class="bg-gradient-to-r from-blue-400 to-purple-500 font-roboto min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4 bg-white rounded-lg shadow-lg">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">Pixel Pals - Virtual Pet Game</h1>
         
-        <!-- Create a Pet Section -->
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Create a Pet</h2>
+        <!-- Welcome Section -->
+        <div id="welcomeSection" class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Welcome to Pixel Pals!</h2>
+            <div class="space-y-4">
+                <button id="createPetBtn" class="w-full bg-blue-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-paw mr-2"></i> Create a Pet
+                </button>
+                <button id="feedPetBtn" class="w-full bg-green-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-utensils mr-2"></i> Feed a Pet
+                </button>
+                <button id="playPetBtn" class="w-full bg-yellow-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-futbol mr-2"></i> Play with a Pet
+                </button>
+                <button id="viewStatsBtn" class="w-full bg-purple-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-chart-bar mr-2"></i> View Pet Stats
+                </button>
+                <button id="exitBtn" class="w-full bg-red-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Exit
+                </button>
+            </div>
+        </div>
+
+        <!-- Create Pet Section -->
+        <div id="createPetSection" class="bg-white shadow-md rounded-lg p-6 mb-8 hidden">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Create a Pet</h2>
             <form id="createPetForm" class="space-y-4">
                 <div>
-                    <label for="petName" class="block text-lg font-medium">Pet Name</label>
+                    <label for="petName" class="block text-lg font-medium text-gray-800">Pet Name</label>
                     <input type="text" id="petName" class="w-full p-2 border border-gray-300 rounded-md" required>
                 </div>
                 <div>
-                    <label for="petType" class="block text-lg font-medium">Pet Type</label>
+                    <label for="petType" class="block text-lg font-medium text-gray-800">Pet Type</label>
                     <select id="petType" class="w-full p-2 border border-gray-300 rounded-md" required>
                         <option value="Dog">Dog</option>
                         <option value="Cat">Cat</option>
                         <option value="Fish">Fish</option>
                     </select>
                 </div>
-                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Create Pet</button>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-plus mr-2"></i> Create Pet
+                </button>
             </form>
+            <button id="backToMenuBtn1" class="w-full bg-gray-500 text-white p-2 rounded-md mt-4 flex items-center justify-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Menu
+            </button>
         </div>
 
-        <!-- Your Pets Section -->
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Your Pets</h2>
+        <!-- Pets List Section -->
+        <div id="petsListSection" class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Your Pets</h2>
             <div id="petsList" class="space-y-4">
                 <!-- Pets will be listed here -->
             </div>
         </div>
+
+        <!-- Feed Pet Section -->
+        <div id="feedPetSection" class="bg-white shadow-md rounded-lg p-6 mb-8 hidden">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Feed a Pet</h2>
+            <form id="feedPetForm" class="space-y-4">
+                <div>
+                    <label for="feedPetName" class="block text-lg font-medium text-gray-800">Pet Name</label>
+                    <select id="feedPetName" class="w-full p-2 border border-gray-300 rounded-md" required>
+                        <!-- Pet names will be populated here -->
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-green-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-utensils mr-2"></i> Feed Pet
+                </button>
+            </form>
+            <button id="backToMenuBtn2" class="w-full bg-gray-500 text-white p-2 rounded-md mt-4 flex items-center justify-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Menu
+            </button>
+        </div>
+
+        <!-- Play with Pet Section -->
+        <div id="playPetSection" class="bg-white shadow-md rounded-lg p-6 mb-8 hidden">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Play with a Pet</h2>
+            <form id="playPetForm" class="space-y-4">
+                <div>
+                    <label for="playPetName" class="block text-lg font-medium text-gray-800">Pet Name</label>
+                    <select id="playPetName" class="w-full p-2 border border-gray-300 rounded-md" required>
+                        <!-- Pet names will be populated here -->
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-yellow-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-futbol mr-2"></i> Play with Pet
+                </button>
+            </form>
+            <button id="backToMenuBtn3" class="w-full bg-gray-500 text-white p-2 rounded-md mt-4 flex items-center justify-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Menu
+            </button>
+        </div>
+
+        <!-- View Pet Stats Section -->
+        <div id="viewStatsSection" class="bg-white shadow-md rounded-lg p-6 mb-8 hidden">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">View Pet Stats</h2>
+            <form id="viewStatsForm" class="space-y-4">
+                <div>
+                    <label for="viewStatsPetName" class="block text-lg font-medium text-gray-800">Pet Name</label>
+                    <select id="viewStatsPetName" class="w-full p-2 border border-gray-300 rounded-md" required>
+                        <!-- Pet names will be populated here -->
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-purple-500 text-white p-2 rounded-md flex items-center justify-center">
+                    <i class="fas fa-chart-bar mr-2"></i> View Stats
+                </button>
+            </form>
+            <button id="backToMenuBtn4" class="w-full bg-gray-500 text-white p-2 rounded-md mt-4 flex items-center justify-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Menu
+            </button>
+        </div>
     </div>
 
     <script>
-        // Handle pet creation
+        // Show and hide sections
+        function showSection(sectionId) {
+            document.getElementById('welcomeSection').classList.add('hidden');
+            document.getElementById('createPetSection').classList.add('hidden');
+            document.getElementById('feedPetSection').classList.add('hidden');
+            document.getElementById('playPetSection').classList.add('hidden');
+            document.getElementById('viewStatsSection').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // Event listeners for menu buttons
+        document.getElementById('createPetBtn').addEventListener('click', function() {
+            showSection('createPetSection');
+        });
+
+        document.getElementById('feedPetBtn').addEventListener('click', function() {
+            populatePetNames('feedPetName');
+            showSection('feedPetSection');
+        });
+
+        document.getElementById('playPetBtn').addEventListener('click', function() {
+            populatePetNames('playPetName');
+            showSection('playPetSection');
+        });
+
+        document.getElementById('viewStatsBtn').addEventListener('click', function() {
+            populatePetNames('viewStatsPetName');
+            showSection('viewStatsSection');
+        });
+
+        document.getElementById('exitBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to exit?')) {
+                window.close();
+            }
+        });
+
+        // Event listeners for back to menu buttons
+        document.getElementById('backToMenuBtn1').addEventListener('click', function() {
+            showSection('welcomeSection');
+        });
+
+        document.getElementById('backToMenuBtn2').addEventListener('click', function() {
+            showSection('welcomeSection');
+        });
+
+        document.getElementById('backToMenuBtn3').addEventListener('click', function() {
+            showSection('welcomeSection');
+        });
+
+        document.getElementById('backToMenuBtn4').addEventListener('click', function() {
+            showSection('welcomeSection');
+        });
+
+        // Event listener for form submission to create a new pet
         document.getElementById('createPetForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const petName = document.getElementById('petName').value;
             const petType = document.getElementById('petType').value;
-            createPet(petName, petType);
+            addPet(petName, petType);
+            showSection('welcomeSection');
         });
 
-        // Create a new pet and add it to the UI
-        function createPet(name, type) {
-            addPetToUI(name, type);
-        }
+        // Event listener for form submission to feed a pet
+        document.getElementById('feedPetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const petName = document.getElementById('feedPetName').value;
+            feedPet(petName);
+            showSection('welcomeSection');
+        });
 
-        // Add pet to the list in the UI
-        function addPetToUI(name, type) {
+        // Event listener for form submission to play with a pet
+        document.getElementById('playPetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const petName = document.getElementById('playPetName').value;
+            playWithPet(petName);
+            showSection('welcomeSection');
+        });
+
+        // Event listener for form submission to view pet stats
+        document.getElementById('viewStatsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const petName = document.getElementById('viewStatsPetName').value;
+            viewPetStats(petName);
+            showSection('welcomeSection');
+        });
+
+        // Function to add a new pet to the list
+        function addPet(name, type) {
             const petCard = document.createElement('div');
             petCard.className = 'bg-gray-100 p-4 rounded-lg shadow-md flex items-center justify-between';
             petCard.innerHTML = `
@@ -72,26 +228,63 @@
             `;
             document.getElementById('petsList').appendChild(petCard);
 
-            // Add functionality for Feed and Play buttons
+            // Event listener for the feed button
             petCard.querySelector('.feedBtn').addEventListener('click', function() {
-                feedPet(petCard);
+                const hunger = petCard.querySelector('.hunger');
+                hunger.textContent = Math.max(0, parseInt(hunger.textContent) - 10);
             });
 
+            // Event listener for the play button
             petCard.querySelector('.playBtn').addEventListener('click', function() {
-                playWithPet(petCard);
+                const happiness = petCard.querySelector('.happiness');
+                happiness.textContent = Math.min(100, parseInt(happiness.textContent) + 10);
             });
         }
 
-        // Mock feed pet logic
-        function feedPet(petCard) {
-            const hunger = petCard.querySelector('.hunger');
-            hunger.textContent = Math.max(0, parseInt(hunger.textContent) - 10);
+        // Function to feed a pet by name
+        function feedPet(name) {
+            const pets = document.querySelectorAll('#petsList > div');
+            pets.forEach(pet => {
+                if (pet.querySelector('h3').textContent.includes(name)) {
+                    pet.querySelector('.feedBtn').click();
+                }
+            });
         }
 
-        // Mock play with pet logic
-        function playWithPet(petCard) {
-            const happiness = petCard.querySelector('.happiness');
-            happiness.textContent = Math.min(100, parseInt(happiness.textContent) + 10);
+        // Function to play with a pet by name
+        function playWithPet(name) {
+            const pets = document.querySelectorAll('#petsList > div');
+            pets.forEach(pet => {
+                if (pet.querySelector('h3').textContent.includes(name)) {
+                    pet.querySelector('.playBtn').click();
+                }
+            });
+        }
+
+        // Function to view pet stats by name
+        function viewPetStats(name) {
+            const pets = document.querySelectorAll('#petsList > div');
+            pets.forEach(pet => {
+                if (pet.querySelector('h3').textContent.includes(name)) {
+                    const hunger = pet.querySelector('.hunger').textContent;
+                    const happiness = pet.querySelector('.happiness').textContent;
+                    alert(`Pet: ${name}\nHunger: ${hunger}\nHappiness: ${happiness}`);
+                }
+            });
+        }
+
+        // Function to populate pet names in a select element
+        function populatePetNames(selectId) {
+            const select = document.getElementById(selectId);
+            select.innerHTML = '';
+            const pets = document.querySelectorAll('#petsList > div');
+            pets.forEach(pet => {
+                const name = pet.querySelector('h3').textContent;
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                select.appendChild(option);
+            });
         }
     </script>
 </body>
