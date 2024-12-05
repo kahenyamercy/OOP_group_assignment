@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Pals - Virtual Pet Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-roboto">
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold text-center mb-8">Pixel Pals - Virtual Pet Game</h1>
+        
+        <!-- Create a Pet Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Create a Pet</h2>
+            <form id="createPetForm" class="space-y-4">
+                <div>
+                    <label for="petName" class="block text-lg font-medium">Pet Name</label>
+                    <input type="text" id="petName" class="w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="petType" class="block text-lg font-medium">Pet Type</label>
+                    <select id="petType" class="w-full p-2 border border-gray-300 rounded-md" required>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Fish">Fish</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Create Pet</button>
+            </form>
+        </div>
+
+        <!-- Your Pets Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Your Pets</h2>
+            <div id="petsList" class="space-y-4">
+                <!-- Pets will be listed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle pet creation
+        document.getElementById('createPetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const petName = document.getElementById('petName').value;
+            const petType = document.getElementById('petType').value;
+            createPet(petName, petType);
+        });
+
+        // Create a new pet and add it to the UI
+        function createPet(name, type) {
+            addPetToUI(name, type);
+        }
+
+        // Add pet to the list in the UI
+        function addPetToUI(name, type) {
+            const petCard = document.createElement('div');
+            petCard.className = 'bg-gray-100 p-4 rounded-lg shadow-md flex items-center justify-between';
+            petCard.innerHTML = `
+                <div>
+                    <h3 class="text-xl font-bold">${name} (${type})</h3>
+                    <p>Hunger: <span class="hunger">50</span></p>
+                    <p>Happiness: <span class="happiness">50</span></p>
+                </div>
+                <div class="space-x-2">
+                    <button class="feedBtn bg-green-500 text-white p-2 rounded-md">Feed</button>
+                    <button class="playBtn bg-yellow-500 text-white p-2 rounded-md">Play</button>
+                </div>
+            `;
+            document.getElementById('petsList').appendChild(petCard);
+
+            // Add functionality for Feed and Play buttons
+            petCard.querySelector('.feedBtn').addEventListener('click', function() {
+                feedPet(petCard);
+            });
+
+            petCard.querySelector('.playBtn').addEventListener('click', function() {
+                playWithPet(petCard);
+            });
+        }
+
+        // Mock feed pet logic
+        function feedPet(petCard) {
+            const hunger = petCard.querySelector('.hunger');
+            hunger.textContent = Math.max(0, parseInt(hunger.textContent) - 10);
+        }
+
+        // Mock play with pet logic
+        function playWithPet(petCard) {
+            const happiness = petCard.querySelector('.happiness');
+            happiness.textContent = Math.min(100, parseInt(happiness.textContent) + 10);
+        }
+    </script>
+</body>
+</html>
